@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+    db:
+        image: postgres
+        restart: always
+        volumes: 
+            - './data:/var/lig/postgresql/data'
+        ports:
+            - '5432:5432'
+        environment: 
+            POSTGRES_USER: 'adminer'
+            POSTGRES_PASSWORD: 123456
+            POSTGRES_DB: 'api-cpf'
+    adminer:
+        image: adminer
+        restart: always
+        ports: 
+            - '8000:8080'
