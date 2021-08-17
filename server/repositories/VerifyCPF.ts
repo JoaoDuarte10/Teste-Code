@@ -1,11 +1,4 @@
-require('dotenv').config();
-import { app } from "./app";
-
-app.listen(process.env.PORT || 3000 )
-
-const cpf = '12345678912';
-
-function verifyCPF(cpf: any) {
+export function verifyCPF(cpf: any) {
     if(
         cpf.length != 11 ||
         cpf == "00000000000" ||
@@ -19,7 +12,7 @@ function verifyCPF(cpf: any) {
         cpf == "88888888888" ||
         cpf == "99999999999"
     ) {
-        return false
+        return false;
     }
 
     let somaPrimeiroDigito = 0
@@ -32,34 +25,32 @@ function verifyCPF(cpf: any) {
     somaPrimeiroDigito += cpf[6] * 4;
     somaPrimeiroDigito += cpf[7] * 3;
     somaPrimeiroDigito += cpf[8] * 2;
-    
+
     if( somaPrimeiroDigito == 10 || somaPrimeiroDigito == 11) somaPrimeiroDigito = 0;
     somaPrimeiroDigito = (somaPrimeiroDigito * 10) % 11;
 
     if(somaPrimeiroDigito != cpf[9]) {
-        return false
+        return false;
     }
 
     let somaSegundoDigito = 0;
-    somaSegundoDigito += cpf[0] * 11
-    somaSegundoDigito += cpf[1] * 10
-    somaSegundoDigito += cpf[2] * 9
-    somaSegundoDigito += cpf[3] * 8
-    somaSegundoDigito += cpf[4] * 7
-    somaSegundoDigito += cpf[5] * 6
-    somaSegundoDigito += cpf[6] * 5
-    somaSegundoDigito += cpf[7] * 4
-    somaSegundoDigito += cpf[8] * 3
-    somaSegundoDigito += cpf[9] * 2
+    somaSegundoDigito += cpf[0] * 11;
+    somaSegundoDigito += cpf[1] * 10;
+    somaSegundoDigito += cpf[2] * 9;
+    somaSegundoDigito += cpf[3] * 8;
+    somaSegundoDigito += cpf[4] * 7;
+    somaSegundoDigito += cpf[5] * 6;
+    somaSegundoDigito += cpf[6] * 5;
+    somaSegundoDigito += cpf[7] * 4;
+    somaSegundoDigito += cpf[8] * 3;
+    somaSegundoDigito += cpf[9] * 2;
 
     if(somaSegundoDigito == 10 || somaSegundoDigito == 11) somaSegundoDigito = 0;
     somaSegundoDigito = (somaSegundoDigito * 10) % 11;
 
     if(somaSegundoDigito != cpf[10]) {
-        return false
+        return false;
     }
 
-    return true
+    return true;
 }
-
-console.log(verifyCPF(cpf))

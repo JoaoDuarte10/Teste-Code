@@ -7,7 +7,7 @@ export class Tables {
 
         CREATE TABLE IF NOT EXISTS cpf(
             id_cpf UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            cpf int NOT NULL,
+            cpf varchar(11) NOT NULL,
             created_at TIMESTAMP NOT NULL DEFAULT NOW()
         )
         `;
