@@ -11,10 +11,10 @@ export class FindAllCpfController {
             const allCpf = await this.findAllCpfUseCase.execute()
 
             res.json(allCpf)
-        }catch(err) {
-            res.status(400).json({
-                message: err.message || 'Unexpected error.'
-            })
+        }catch(error) {
+            res.status(400).json(
+                error
+            )
         }
     }
 }

@@ -8,7 +8,18 @@ export class CheckCpfUseCase {
     ){}
 
     async handle({cpf}: CpfDTO){
-        if(verifyCPF(cpf) == false) throw new Error("CPF is not valid!")
-        return await this.cpfRepository.find(cpf)
+        if(verifyCPF(cpf) == false) throw {
+            type: "InvalidCpfException", 
+            message: "CPF not valid!"
+        }
+        
+        const findCpf = await this.cpfRepository.find(cpf)
+
+        if(!findCpf)throw {
+            type: "NotFoundCpfException", 
+            message: "CPF not found."
+        }
+
+        return findCpf;
     }
 }

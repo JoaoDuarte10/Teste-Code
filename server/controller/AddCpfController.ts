@@ -15,10 +15,10 @@ export class AddCpfController {
             return res.status(201).json({
                 message: "CPF successfully added!"
             })
-        }catch(err) {
-            res.status(400).json({
-                message: err.message || 'Unexpected error'
-            })
+        }catch(error: any) {
+            res.status(400).json(
+                error
+            )
         }
     }
 }

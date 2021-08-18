@@ -8,10 +8,17 @@ export class RemoveCpfUseCase {
     ){}
 
     async execute({cpf}: CpfDTO): Promise<void>{
-        if(verifyCPF(cpf) == false) throw new Error("CPF is not valid!")
+        if(verifyCPF(cpf) == false) throw  {
+            type: "InvalidCpfException", 
+            message: "CPF not valid!"
+        }
 
         const cpfAlreadyExist = await this.cpfRepository.find(cpf)
-        if(!cpfAlreadyExist) throw new Error("CPF not exists!")
+        
+        if(!cpfAlreadyExist) throw {
+            type: "ExistsCpfException", 
+            message: "CPF already exists!"
+        }
 
         await this.cpfRepository.remove(cpf)
     }

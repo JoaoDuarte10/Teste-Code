@@ -10,14 +10,12 @@ export class CheckCpfController {
         const { cpf } = req.params;
         try {
             const checkCPF = await this.checkCpfUseCase.handle({cpf})
-            if(!checkCPF) res.status(400).json({
-                message: "CPF not exists"
-            })
+            
             return res.status(200).json(checkCPF)
-        }catch(err) {
-            res.status(400).json({
-                message: err.message || 'Unexpected error.'
-            })
+        }catch(error) {
+            res.status(400).json(
+                error
+            )
         }
     }
 }

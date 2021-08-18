@@ -9,11 +9,13 @@ export class AddCpfUseCase {
     ){}
 
     async execute(cpf_request: CpfDTO) {
-        if(verifyCPF(cpf_request.cpf) == false) throw new Error("CPF is not valid!")
+        if(verifyCPF(cpf_request.cpf) == false) throw {type: "InvalidCpfException", message: "CPF not valid!"}
 
         const cpfAlreadyExist = await this.cpfRepository.find(cpf_request.cpf)
 
-        if(cpfAlreadyExist) throw new Error("CPF already exists!")
+        if(cpfAlreadyExist) throw {type: "ExistsCpfException", message: "CPF already exists!"}
+
+       
 
         const cpfEntitie = new CPF(cpf_request)
 

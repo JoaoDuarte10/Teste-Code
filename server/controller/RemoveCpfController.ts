@@ -15,10 +15,10 @@ export class RemoveCpfController {
             return res.status(200).json({
                 message: "CPF removed successfully"
             })
-        } catch (err) {
-            res.status(400).json({
-                message: err.message || 'Unexpected error.'
-            })
+        } catch (error) {
+            res.status(400).json(
+                error
+            )
         }
     }
 }
