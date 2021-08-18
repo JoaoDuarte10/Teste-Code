@@ -1,6 +1,16 @@
 version: '3.9'
 
 services:
+    app:
+        build: .
+        restart: always
+        ports:
+            - '3000:3000'
+        depends_on: 
+            - db
+        links:
+            - db
+        command: npm start
     db:
         image: postgres
         restart: always
@@ -12,8 +22,3 @@ services:
             POSTGRES_USER: 'adminer'
             POSTGRES_PASSWORD: 123456
             POSTGRES_DB: 'api-cpf'
-    adminer:
-        image: adminer
-        restart: always
-        ports: 
-            - '8000:8080'

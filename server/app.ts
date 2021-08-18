@@ -5,7 +5,10 @@ import { router } from './routes';
 const app = express();
 const tables = new Tables();
 
-tables.createTables();
+async function executeTable() {
+    await tables.createTables();
+}
+executeTable();
 
 app.use(express.json());
 app.use(router)
