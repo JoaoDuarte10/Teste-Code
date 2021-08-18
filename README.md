@@ -38,6 +38,8 @@ O container da API em si, e o container do Banco de Dados (Postgres).
 
     docker-compose down
 
+## Caso a aplicação não funcione na primeira vez que subir containeres, reinicie eles para que as tabelas sejam criadas corretamente no banco de dados.
+
 ## Rotas da API
 
 Get:
