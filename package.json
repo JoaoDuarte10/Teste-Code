@@ -1,7 +1,7 @@
 {
   "name": "api-max-milhas",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server/server.ts",
   "author": "JoaoDuarte10 <joaoduarte7341@gmail.com>",
   "license": "MIT",
   "scripts": {
