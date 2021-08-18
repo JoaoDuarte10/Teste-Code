@@ -3,7 +3,7 @@ export class CPF {
 
     public cpf: string;
 
-    constructor(cpf: string){
-        this.cpf;
+    constructor(props: Omit<CPF, 'id_cpf'>, id_cpf?: string){
+        Object.assign(this, props)
     }
 }

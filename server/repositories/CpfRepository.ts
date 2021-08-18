@@ -1,8 +1,8 @@
 import { CPF } from "../entities/CPF";
 
 export interface CpfRepository {
-    save(cpf: CPF): Promise<CPF>
-    find(cpf: string): Promise<CPF>
-    findAll(): Promise<CPF>
-    remove(cpf: string): Promise<void>
+    save(cpf: CPF): Promise<void>;
+    find(cpf: string): Promise<any>;
+    findAll(): Promise<any>;
+    remove(cpf: string): Promise<void>;
 }
