@@ -1,4 +1,4 @@
-export function verifyCPF(cpf: any) {
+export function validateCPF(cpf: any) {
     if(
         cpf.length != 11 ||
         cpf == "00000000000" ||

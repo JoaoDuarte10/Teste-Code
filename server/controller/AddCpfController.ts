@@ -15,7 +15,7 @@ export class AddCpfController {
             return res.status(201).json({
                 message: "CPF successfully added!"
             })
-        }catch(error: any) {
+        }catch(error) {
             res.status(400).json(
                 error
             )

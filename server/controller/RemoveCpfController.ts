@@ -11,7 +11,6 @@ export class RemoveCpfController {
 
         try {
             await this.removeCpfUseCase.execute({cpf})
-
             return res.status(200).json({
                 message: "CPF removed successfully"
             })

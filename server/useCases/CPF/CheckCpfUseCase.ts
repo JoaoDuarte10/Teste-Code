@@ -1,5 +1,5 @@
 import { CpfRepository } from "../../repositories/CpfRepository";
-import { verifyCPF } from "../../repositories/VerifyCPF";
+import { validateCPF } from "../../repositories/ValidateCpf";
 import { CpfDTO } from "./CpfDTO";
 
 export class CheckCpfUseCase {
@@ -8,16 +8,16 @@ export class CheckCpfUseCase {
     ){}
 
     async handle({cpf}: CpfDTO){
-        if(verifyCPF(cpf) == false) throw {
+        if(validateCPF(cpf) == false) throw {
             type: "InvalidCpfException", 
-            message: "CPF not valid!"
+            message: "CPF is not valid."
         }
         
-        const findCpf = await this.cpfRepository.find(cpf)
+        const findCpf = await this.cpfRepository.findCpf(cpf)
 
         if(!findCpf)throw {
             type: "NotFoundCpfException", 
-            message: "CPF not found."
+            message: "Not found CPF."
         }
 
         return findCpf;

@@ -9,8 +9,8 @@ export class FindAllCpfController {
     async handle(req: Request, res: Response) {
         try {
             const allCpf = await this.findAllCpfUseCase.execute()
+            res.status(200).json(allCpf)
 
-            res.json(allCpf)
         }catch(error) {
             res.status(400).json(
                 error

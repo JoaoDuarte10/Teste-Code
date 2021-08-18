@@ -1,5 +1,5 @@
 import { CpfRepository } from "../../repositories/CpfRepository";
-import { verifyCPF } from "../../repositories/VerifyCPF";
+import { validateCPF } from "../../repositories/ValidateCpf";
 import { CpfDTO } from "./CpfDTO";
 
 export class RemoveCpfUseCase {
@@ -8,16 +8,16 @@ export class RemoveCpfUseCase {
     ){}
 
     async execute({cpf}: CpfDTO): Promise<void>{
-        if(verifyCPF(cpf) == false) throw  {
+        if(validateCPF(cpf) == false) throw  {
             type: "InvalidCpfException", 
-            message: "CPF not valid!"
+            message: "CPF is not valid."
         }
 
-        const cpfAlreadyExist = await this.cpfRepository.find(cpf)
+        const cpfAlreadyExist = await this.cpfRepository.findCpf(cpf)
         
         if(!cpfAlreadyExist) throw {
-            type: "ExistsCpfException", 
-            message: "CPF already exists!"
+            type: "NotFoundCpfException", 
+            message: "Not found CPF."
         }
 
         await this.cpfRepository.remove(cpf)

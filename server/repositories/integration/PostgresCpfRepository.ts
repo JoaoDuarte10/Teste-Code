@@ -15,7 +15,7 @@ export class PostgresCpfRepository implements CpfRepository{
         }
     }
 
-    async find(cpf: string): Promise<CPF> {
+    async findCpf(cpf: string): Promise<CPF> {
         const sqlFind = {
             text: 'SELECT * FROM cpf WHERE cpf=$1',
             values: [cpf]

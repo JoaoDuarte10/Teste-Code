@@ -10,8 +10,8 @@ export class CheckCpfController {
         const { cpf } = req.params;
         try {
             const checkCPF = await this.checkCpfUseCase.handle({cpf})
-            
             return res.status(200).json(checkCPF)
+            
         }catch(error) {
             res.status(400).json(
                 error
