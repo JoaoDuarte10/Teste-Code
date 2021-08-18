@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { addCpfController, allCpfController, checkCpfController } from "./useCases/CPF";
+import { request, response, Router } from "express";
+import { addCpfController, allCpfController, checkCpfController, removeCpfController } from "./useCases/CPF";
 
 const router = Router();
 
@@ -11,6 +11,9 @@ router.get('/cpf', (request, response)=>{
 })
 router.get('/cpf/:cpf', (request, response)=>{
     return checkCpfController.handle(request, response)
+})
+router.delete('/cpf/:cpf', (request, response)=>{
+    return removeCpfController.handle(request, response)
 })
 
 export { router }

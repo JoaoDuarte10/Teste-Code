@@ -38,6 +38,15 @@ export class PostgresCpfRepository implements CpfRepository{
     }
 
     async remove(cpf: string): Promise<void> {
+        const sqlRemove = {
+            text: 'DELETE FROM cpf WHERE cpf=$1',
+            values: [cpf]
+        }
 
+        try{
+            await SQLExecute.query(sqlRemove.text, sqlRemove.values)
+        }catch(err) {
+            return err.message;
+        }
     }
 }
